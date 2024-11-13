@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const usermodel = require('../model/DB_Schema');
+const usermodel = require('../model/DB_Schema.js');
 const bcrypt = require('bcrypt');
 const { createToken } = require('./jwtgeneration.js');
 const login = async (req, res) => {
