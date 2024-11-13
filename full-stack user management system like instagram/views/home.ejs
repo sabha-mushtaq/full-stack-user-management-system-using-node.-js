@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .main {
+            width: 90%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #image {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            border: 4px solid #3b82f6;
+            margin: 20px auto;
+            background-image: url('<%= imagePath %>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        #image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        p {
+            font-size: 1em;
+            font-style: italic;
+            margin: 5px 0;
+            color: #666;
+        }
+
+        #viewcount {
+            background-color: #f9f9f9;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 10px;
+            margin-top: 20px;
+        }
+
+        /* Button styling */
+        .logout-button {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .logout-button:hover {
+            background-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .main {
+                width: 95%;
+                padding: 20px;
+            }
+
+            #image {
+                height: 120px;
+                width: 120px;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .logout-button {
+                width: 100%;
+                padding: 8px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="image"></div>
+        <h2 id="usern"><%= username %></h2>
+        <p id="boi"><%= bio %></p>
+        <p id="ema"><%= email %></p>
+        <div id="viewcount">
+            <p>Number of times you visited:</p>
+            <h2 id="viewc"><%= viewCount || 0 %></h2>
+        </div>
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function logout() {
+            fetch('/insta/logout', { 
+                method: 'POST',
+                credentials: 'include' 
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+            })
+            .catch(error => console.error('Logout failed:', error));
+        }
+    </script>
+</body>
+</html>
+
+

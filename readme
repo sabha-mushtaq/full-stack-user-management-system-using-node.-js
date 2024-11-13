@@ -1,0 +1,56 @@
+## User Management Project
+This project is a user management system built with Node.js, Express, and MongoDB. It includes features such as user registration, login, JWT-based authentication, session management, profile handling, and error handling. The project uses EJS as a template engine for server-side rendering and follows secure practices for session and environment management.
+
+## Table of Contents
+Features
+Technologies Used
+Installation
+Environment Variables
+Project Structure
+Usage
+API Endpoints
+Error Handling
+License
+## Features
+User registration and login with JWT authentication
+Password hashing for secure storage
+Token-based authentication using JWT (JSON Web Tokens)
+User profile management
+Basic error handling for robust response management
+## Technologies Used
+Node.js and Express: For building the server and routing
+MongoDB Atlas: Cloud-based NoSQL database
+EJS: Template engine for rendering views
+JWT: For stateless authentication
+bcrypt: For hashing passwords
+dotenv: For environment variable management
+express-session: For optional session handling
+cookie-parser: For handling cookies
+## Installation
+1-Clone the repository:
+git clone https://github.com/sabha-mushtaq/full-stack-user-management-system-using-node.-js.git
+cd user-management-project
+2-Install dependencies:
+npm install
+3-Set up environment variables: Create a .env file in the root directory and add the following:
+PORT=5001
+DB_HOST=your_mongodb_uri
+SESSION_SECRET=your_session_secret_key
+JWT_SECRET=your_jwt_secret_key
+4-Run the server:
+npm start
+The server will be running on http://localhost:5001.
+## Environment Variables
+The project uses several environment variables stored in a .env file:
+PORT: Port for the server to listen on.
+DB_HOST: MongoDB Atlas URI for database connection.
+SESSION_SECRET: A secret key for session encryption.
+JWT_SECRET: Secret key for signing JWT tokens, used for user authentication.
+## Usage
+Registration: Users can register with their credentials.
+Login: Authenticated users receive a JWT for secure access.
+Profile Management: Users can create and view  their profile information.
+## Error Handling
+Custom error-handling middleware is used to capture and respond to errors throughout the application. This middleware ensures all errors are logged and handled appropriately.
+## License
+This project is licensed under the MIT License. 
