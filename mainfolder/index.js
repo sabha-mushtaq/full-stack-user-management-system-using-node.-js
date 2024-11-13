@@ -27,16 +27,16 @@ app.use(express.json());  // For JSON data
 app.use(express.urlencoded({ extended: true })); 
 app.use(cookieParser());
 // route setting
-const authRouter = require('./mainfolder/routes/routes.js');
+const authRouter = require('./routes/routes.js');
 app.use('/insta',authRouter);
  
 // Defining port adress
 const port =  5001;
 //connecting to database 
-const connecttodatabase = require('./mainfolder/model/connect.js');
+const connecttodatabase = require('./model/connect.js');
 connecttodatabase()
 // error handling middleware
-const {errorHandler} =require('./mainfolder/middlewares/errorhandling.js')
+const {errorHandler} =require('./middlewares/errorhandling.js')
 //listening server
 app.listen(port,()=>{
 
