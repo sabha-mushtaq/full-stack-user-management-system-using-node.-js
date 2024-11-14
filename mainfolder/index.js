@@ -31,19 +31,13 @@ const authRouter = require('./routes/routes.js');
 app.use('/insta',authRouter);
  
 // Defining port adress
-const port =  5001;
+const port =  process.env.MY_SERVERPORT || 5000;
 //connecting to database 
 const connecttodatabase = require('./model/connect.js');
 connecttodatabase()
 // error handling middleware
 const {errorHandler} =require('./middlewares/errorhandling.js')
 //listening server
-app.listen(port,()=>{
-
-console.log('server listening sucessfully on port', port);
-
-
-
-
-
-})
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server is listening on port ${port}`);
+});
