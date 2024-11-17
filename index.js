@@ -5,9 +5,9 @@ const path = require('path');
 const ejs = require('ejs');
 const app = express();
 app.set('view engine','ejs')
-app.set('views', path.join(__dirname,'views'));
+app.set('views', path.join(__dirname,'mainfolder','views'));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'mainfolder', 'public')));
 
 
 
@@ -27,16 +27,16 @@ app.use(express.json());  // For JSON data
 app.use(express.urlencoded({ extended: true })); 
 app.use(cookieParser());
 // route setting
-const authRouter = require('./routes/routes.js');
+const authRouter = require('./mainfolder/routes/routes.js');
 app.use('/insta',authRouter);
  
 // Defining port adress
 const port =  process.env.MY_SERVERPORT || 5000;
 //connecting to database 
-const connecttodatabase = require('./model/connect.js');
+const connecttodatabase = require('./mainfolder/model/connect.js');
 connecttodatabase()
 // error handling middleware
-const {errorHandler} =require('./middlewares/errorhandling.js')
+const {errorHandler} =require('./mainfolder/middlewares/errorhandling.js')
 //listening server
 app.listen(port, '0.0.0.0', () => {
     console.log(`Server is listening on port ${port}`);
